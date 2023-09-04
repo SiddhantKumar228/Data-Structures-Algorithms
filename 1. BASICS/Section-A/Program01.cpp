@@ -9,7 +9,7 @@ int main()
 
     // Input:
     cin >> n;
-    
+
     // Output:
     cout << n << endl;
 
