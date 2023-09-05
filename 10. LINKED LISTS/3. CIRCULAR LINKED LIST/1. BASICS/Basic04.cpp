@@ -23,8 +23,8 @@ void insert(Node *&tail, int val)
     {
         tail = newNode;
         tail->next = tail;
+        return;
     }
-
     newNode->next = tail->next;
     tail->next = newNode;
 }
