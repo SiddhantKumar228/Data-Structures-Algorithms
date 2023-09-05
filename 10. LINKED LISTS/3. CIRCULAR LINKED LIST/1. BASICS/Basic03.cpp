@@ -1,4 +1,4 @@
-// Insertion in Circular Linked List (After a given data)
+// Insertion in Circular Linked List (Before a given data)
 #include <iostream>
 using namespace std;
 
@@ -32,8 +32,8 @@ void insert(Node *&tail, int val)
     tail->next = newNode;
 }
 
-// Insert After Data
-void insertAfter(Node *tail, int x, int n)
+// Insert Before Data
+void insertBefore(Node *tail, int x, int n)
 {
     Node *newNode = new Node(n);
 
@@ -43,8 +43,8 @@ void insertAfter(Node *tail, int x, int n)
         return;
     }
 
-    Node *temp = tail->next; // If list is non empty
-    while (temp->data != x)
+    Node *temp = tail->next; // If list is non-empty
+    while (temp->next->data != x)
     {
         if (temp == tail)
         {
@@ -52,14 +52,14 @@ void insertAfter(Node *tail, int x, int n)
         }
         temp = temp->next;
     }
-    if (temp->data == x) // If data is present
+    if (temp->next->data == x) // If data is present
     {
         newNode->next = temp->next;
         temp->next = newNode;
     }
     else // If data is not present
     {
-        cout << "Data is not present in the list" << endl;
+        cout << "Element is not present" << endl;
     }
 }
 
@@ -82,7 +82,7 @@ int main()
     insert(tail, 96);
     insert(tail, 56);
     insert(tail, 33);
-    insert(tail, 77);
+    insert(tail, 21);
     insert(tail, 18);
     print(tail);
     cout << "\nTail: " << tail->data << endl
@@ -93,10 +93,10 @@ int main()
     cin >> n;
 
     int x;
-    cout << "Enter the data after which you want to insert new node: ";
+    cout << "Enter the data before which you want to insert new node: ";
     cin >> x;
 
-    insertAfter(tail, x, n);
+    insertBefore(tail, x, n);
     print(tail);
     return 0;
 }
