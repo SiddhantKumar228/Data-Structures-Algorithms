@@ -1,4 +1,4 @@
-// Deletion of Node - From Beginning
+// Deletion of Node - From End
 
 #include <iostream>
 using namespace std;
@@ -28,8 +28,8 @@ void insertAtBeginning(Node *&head, Node *&tail, int val)
     head = newNode;
 }
 
-// Delete from beginning
-void delFromBeginning(Node *&head, Node *&tail)
+// Delete from end
+void delFromEnd(Node *&head, Node *&tail)
 {
     if (head == NULL) // If list is Empty
     {
@@ -38,8 +38,14 @@ void delFromBeginning(Node *&head, Node *&tail)
     }
 
     Node *temp = head; // If the list is not empty
-    head = head->next;
-    temp->next = NULL;
+    while (temp->next != tail)
+    {
+        temp = temp->next;
+    }
+
+    tail = temp;
+    temp = temp->next;
+    tail->next = NULL;
     delete temp;
 }
 
@@ -81,7 +87,7 @@ int main()
 
     for (int i = 0; i < n; i++)
     {
-        delFromBeginning(head, tail);
+        delFromEnd(head, tail);
     }
 
     print(head);

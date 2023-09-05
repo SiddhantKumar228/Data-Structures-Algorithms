@@ -1,4 +1,4 @@
-// Deletion of Node - From Beginning
+// Deletion of Node - From Position
 
 #include <iostream>
 using namespace std;
@@ -28,8 +28,8 @@ void insertAtBeginning(Node *&head, Node *&tail, int val)
     head = newNode;
 }
 
-// Delete from beginning
-void delFromBeginning(Node *&head, Node *&tail)
+// Delete from position
+void delFromPos(Node *&head, Node *&tail, int pos)
 {
     if (head == NULL) // If list is Empty
     {
@@ -37,10 +37,53 @@ void delFromBeginning(Node *&head, Node *&tail)
         return;
     }
 
-    Node *temp = head; // If the list is not empty
-    head = head->next;
-    temp->next = NULL;
-    delete temp;
+    int count = 0; // Count the number of nodes
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        count++;
+        temp = temp->next;
+    }
+
+    if (pos == 1) // Position is first
+    {
+        temp = head;
+        head = head->next;
+        temp->next = NULL;
+        delete temp;
+    }
+
+    else if (pos == count) // Position is last
+    {
+        temp = head;
+        while (temp->next != tail)
+        {
+            temp = temp->next;
+        }
+
+        tail = temp;
+        temp = temp->next;
+        tail->next = NULL;
+        delete temp;
+    }
+
+    else // Position is in-between
+    {
+        count = 1;
+        Node *prev = NULL;
+        Node *curr = head;
+
+        while (count < pos)
+        {
+            prev = curr;
+            curr = curr->next;
+            count++;
+        }
+
+        prev->next = curr->next;
+        curr->next = NULL;
+        delete curr;
+    }
 }
 
 // Traversing of Linked List
@@ -53,7 +96,8 @@ void print(Node *head)
         cout << temp->data << " ";
         temp = temp->next;
     }
-    cout << endl;
+    cout << endl
+         << endl;
 }
 
 int main()
@@ -79,13 +123,16 @@ int main()
     cout << "Enter the number of elements to be deleted: ";
     cin >> n;
 
+    int pos;
     for (int i = 0; i < n; i++)
     {
-        delFromBeginning(head, tail);
+        cout << "Enter the position: ";
+        cin >> pos;
+        delFromPos(head, tail, pos);
+        print(head);
     }
 
-    print(head);
-    cout << "\nHead: " << head->data << endl;
-    cout << "\nTail: " << tail->data << endl;
+    cout << "Head: " << head->data << endl;
+    cout << "Tail: " << tail->data << endl;
     return 0;
 }
