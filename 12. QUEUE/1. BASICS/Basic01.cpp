@@ -1,6 +1,6 @@
 // Creating a Queue and performing basic operations
 
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 int main()
