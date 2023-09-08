@@ -1,4 +1,4 @@
-// Stack implementation of array
+// Stack implementation using array
 
 #include <iostream>
 using namespace std;
@@ -11,9 +11,9 @@ public:
     int size;
 
     // Constructor
-    Stack(int val)
+    Stack(int size)
     {
-        this->size = val;
+        this->size = size;
         arr = new int(size);
         top = -1;
     }
@@ -46,7 +46,7 @@ public:
         // if any element is not present
         else
         {
-            cout << "Stack Underflow"<< endl;
+            cout << "Stack Underflow" << endl;
         }
     }
 
@@ -87,6 +87,8 @@ int main()
     Stack st(6); // Stack container is created of size 6
 
     // Push Operations with Peak elements
+    cout << "PUSH OPERATIONS\n"
+         << endl;
     st.push(3);
     cout << st.peak() << endl;
     st.push(8);
@@ -105,6 +107,8 @@ int main()
     cout << endl;
 
     // Pop Operations with Peak elements
+    cout << "POP OPERATIONS\n"
+         << endl;
     st.pop();
     cout << st.peak() << endl;
     st.pop();
