@@ -20,8 +20,8 @@ void rotate(int **arr, int n)
         temp_col++;
     }
 
-    // Printing Roated Matrix
-    cout << "\nRoated Matrix: " << endl;
+    // Printing Rotated Matrix
+    cout << "\nRotated Matrix: " << endl;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
