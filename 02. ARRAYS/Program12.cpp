@@ -1,4 +1,4 @@
-// WAP where every integer occurs twice, one integer is unique in an array
+// Find unique element, in an array where every integer occurs twice
 
 #include <iostream>
 using namespace std;
