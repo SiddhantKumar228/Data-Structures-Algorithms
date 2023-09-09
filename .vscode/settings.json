@@ -1,6 +1,8 @@
 {
-    "files.associations": {
-        "COMMIT_EDITMSG": "cpp",
-        "iostream": "cpp"
-    }
+  "files.associations": {
+    "COMMIT_EDITMSG": "cpp",
+    "iostream": "cpp",
+    "bitset": "cpp",
+    "set": "cpp"
+  }
 }
