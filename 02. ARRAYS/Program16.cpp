@@ -1,4 +1,5 @@
 // Difference of Two Arrays
+
 #include <iostream>
 using namespace std;
 
@@ -18,18 +19,40 @@ void difference(int *arr1, int a, int *arr2, int b)
 
     // Third Array
     int *a3 = new int[c];
-
     int i = a - 1;
     int j = b - 1;
     int k = c - 1;
-    int carry = 0;
-
+    int borrow = 0;
     while (k >= 0)
     {
-        if (i >= 0)
+        int diff = (arr1[i] - borrow);
+        if (j >= 0)
         {
-            int e1 = arr1[i];
+            diff -= arr2[j];
         }
+
+        // if difference is negative
+        if (diff < 0)
+        {
+            diff += 10;
+            borrow = 1;
+        }
+
+        // iff difference is positive
+        else
+        {
+            borrow = 0;
+        }
+
+        a3[k] = diff;
+        i--;
+        j--;
+        k--;
+    }
+
+    for (int i = 0; i < c; i++)
+    {
+        cout << a3[i] << " ";
     }
 }
 int main()
