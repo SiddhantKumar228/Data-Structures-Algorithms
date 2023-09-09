@@ -1,6 +1,7 @@
 // Palindrome String
 
 #include <iostream>
+#include<string>
 using namespace std;
 
 bool isPalin(string str)
