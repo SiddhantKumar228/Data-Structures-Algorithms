@@ -51,7 +51,7 @@ int main()
     cout << "Enter the size of the array: ";
     cin >> n;
     int *arr = new int[n];
-    cout << "Enter the elements in array: " << endl;
+    cout << "Enter the elements in array 0,1,2: " << endl;
 
     for (int i = 0; i < n; i++)
     {
