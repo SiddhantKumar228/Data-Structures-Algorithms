@@ -10,7 +10,7 @@ int removeBit(int n)
 
 int main()
 {
-    int n, i;
+    int n;
     cout << "Enter the number: ";
     cin >> n;
 
