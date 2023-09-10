@@ -1,3 +1,5 @@
+// Single Inheritance
+
 #include <iostream>
 using namespace std;
 
@@ -21,7 +23,6 @@ public:
 
 int main()
 {
-    Child ob1;
-    
+    Child ob;
     return 0;
 }
