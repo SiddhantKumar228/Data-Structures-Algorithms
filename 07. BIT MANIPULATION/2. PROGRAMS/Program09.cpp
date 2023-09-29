@@ -4,7 +4,7 @@
 #include <map>
 using namespace std;
 
-void two_ele(int *arr, int n)
+void two_ele(int *arr, int num)
 {
 }
 
