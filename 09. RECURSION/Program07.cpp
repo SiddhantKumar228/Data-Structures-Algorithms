@@ -3,39 +3,39 @@
 #include <iostream>
 using namespace std;
 
-bool issort(int *arr, int n)
+// isSorted function
+bool isSorted(int *arr, int s, int e)
 {
-    // Base case:
-    if (n == 0 || n == 1)
+    // Base case
+    if (s == e)
     {
         return true;
     }
 
-    // Comparing first two elements
-    if (arr[0] > arr[1])
+    // Check each element with next element
+    if (arr[s] < arr[s + 1])
     {
-        return false;
+        return isSorted(arr, s + 1, e);
     }
-    // Recurrence relation
-    else
-    {
-        return issort(arr + 1, n - 1);
-    }
+
+    return false;
 }
 
 int main()
 {
     int n;
-    cout << "Enter the n: ";
+    cout << "Enter the number of terms: ";
     cin >> n;
+
+    cout << "Enter the elements in array:\n";
     int *arr = new int[n];
-    cout << "Enter elements in array: " << endl;
     for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
     }
 
-    if (issort(arr, n))
+    // Checking if array is sorted
+    if (isSorted(arr, 0, n - 1))
     {
         cout << "Array is sorted";
     }
@@ -43,5 +43,6 @@ int main()
     {
         cout << "Array is not sorted";
     }
+
     return 0;
 }

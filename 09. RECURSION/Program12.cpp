@@ -1,10 +1,31 @@
-// Bubble Sort using Recursion
+// Insertion Sort using Recursion
 
 #include <iostream>
 using namespace std;
 
 // Looping function (Inner Loop)
-void looping(int *arr, int s, int e)
+void looping(int *arr, int j, int current)
+{
+    // Base case
+    if (j < 0 || current > arr[j])
+    {
+        return;
+    }
+
+    // Performing Swapping
+    if (arr[j] > arr[j + 1])
+    {
+        arr[j + 1] = arr[j];
+        j--;
+    }
+    arr[j + 1] = current;
+
+    // Recursive Call
+    looping(arr, j, current);
+}
+
+// Insertion Sort function (Outer Loop)
+void insertionSort(int *arr, int s, int e)
 {
     // Base case
     if (s > e)
@@ -12,32 +33,13 @@ void looping(int *arr, int s, int e)
         return;
     }
 
-    // Performing Swap
-    if (arr[s] > arr[s + 1])
-    {
-        int temp = arr[s];
-        arr[s] = arr[s + 1];
-        arr[s + 1] = temp;
-    }
-
-    // Recursive Call
-    looping(arr, s + 1, e);
-}
-
-// Bubble Sort function (Outer Loop)
-void bubbleSort(int *arr, int e)
-{
-    // Base case
-    if (e == 0)
-    {
-        return;
-    }
-
     // Calling Looping function
-    looping(arr, 0, e - 1);
+    int current = arr[s];
+    int j = s - 1;
+    looping(arr, j, current);
 
     // Recursive Call
-    bubbleSort(arr, e - 1);
+    insertionSort(arr, s + 1, e);
 }
 
 // Main function
@@ -54,10 +56,10 @@ int main()
         cin >> arr[i];
     }
 
-    // Calling Bubble Sort function
-    bubbleSort(arr, n - 1);
+    // Calling Insertion Sort function
+    insertionSort(arr, 1, n - 1);
 
-    cout << "\nArray after bubble sort:\n";
+    cout << "\nArray after insertion sort:\n";
     for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";

@@ -3,51 +3,64 @@
 #include <iostream>
 using namespace std;
 
-// Selection Sort
-void selectionSort(int *arr, int begin, int size)
+// Looping function (Inner Loop)
+void looping(int *arr, int i, int s, int e)
 {
     // Base case
-    if (begin >= size - 1)
+    if (s > e)
     {
         return;
     }
 
-    // Traversing through array
-    int min = begin;
-    for (int i = begin; i < size; i++)
+    // Performing Swap
+    if (arr[i] > arr[s])
     {
-        if (arr[min] > arr[i])
-        {
-            min = i;
-        }
+        int temp = arr[i];
+        arr[i] = arr[s];
+        arr[s] = temp;
     }
-    // Swapping minimum element with first element
-    int temp = arr[min];
-    arr[min] = arr[begin];
-    arr[begin] = temp;
 
-    // Recurrence Relation
-    selectionSort(arr, begin + 1, size);
+    // Recursive Call
+    looping(arr, i, s + 1, e);
 }
 
+// Selection Sort function (Outer loop)
+void selectionSort(int *arr, int s, int e)
+{
+    // Base case
+    if (s == e)
+    {
+        return;
+    }
+
+    // Calling Looping function
+    looping(arr, s, s + 1, e);
+
+    // Recursive Call
+    selectionSort(arr, s + 1, e);
+}
+
+// Main function
 int main()
 {
     int n;
-    cout << "Enter the n: ";
+    cout << "Enter the number of terms: ";
     cin >> n;
+
+    cout << "Enter the elements in array:\n";
     int *arr = new int[n];
-    cout << "Enter elements in array: " << endl;
     for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
     }
 
-    selectionSort(arr, 0, n);
+    // Calling Selection Sort function
+    selectionSort(arr, 0, n - 1);
 
+    cout << "\nArray after selection sort:\n";
     for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";
     }
-
     return 0;
 }
